@@ -3,11 +3,11 @@ import { ChallengesContext } from '../contexts/ChallengesContext';
 import styles from '../styles/components/ChallengeBox.module.css';
 
 export function ChallengeBox() {
-    const { activeChallenge, resetChallenge } = useContext(ChallengesContext)
+    const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext)
 
     return (
         <div className={styles.challengeBoxContainer}>
-            { activeChallenge ? (
+            {activeChallenge ? (
                 <div className={styles.challengeActive}>
                     <header>Ganhe {activeChallenge.amount} xp</header>
 
@@ -23,12 +23,13 @@ export function ChallengeBox() {
                             onClick={resetChallenge}
                             className={styles.challengeFailedButton}>
                             Falhei
-                            </button>
+                        </button>
                         <button
                             type="button"
+                            onClick={completeChallenge}
                             className={styles.challengeSucceedButton}>
-                            Completey
-                            </button>
+                            Completei
+                        </button>
                     </footer>
                 </div>
             ) : (
@@ -36,8 +37,8 @@ export function ChallengeBox() {
                     <strong>Finalize um ciclo para receber um desafio</strong>
                     <p>
                         <img src="icons/level-up.svg" alt="Level up" />
-                Avance de level completando desafios.
-            </p>
+                        Avance de level completando desafios.
+                    </p>
                 </div>
             )}
         </div>
